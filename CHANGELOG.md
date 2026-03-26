@@ -5,6 +5,16 @@ All notable changes to dictfix will be documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-03-26
+
+### Added
+- `dfx` shell alias auto-added during `./install.sh` (detects .zshrc/.bashrc/.bash_profile, skips if already present)
+- MIT disclaimer in README
+
+### Changed
+- Installer "Done" section no longer shows alias as a manual step (handled automatically)
+- Version bump to 1.3.1
+
 ## [1.3.0] - 2026-03-26
 
 ### Added

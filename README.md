@@ -269,3 +269,7 @@ File an issue at [github.com/crankd/dictfix/issues](https://github.com/crankd/di
 ## License
 
 [MIT](LICENSE)
+
+### Disclaimer
+
+This software is provided "as is", without warranty of any kind, express or implied. The authors are not responsible for any damages, data loss, or unintended behavior arising from the use of this software. dictfix modifies espanso configuration files on your local machine and restarts the espanso service — use at your own risk. By using this software, you agree to the terms of the [MIT License](LICENSE).

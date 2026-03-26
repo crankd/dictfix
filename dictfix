@@ -54,7 +54,7 @@ import re
 import csv
 import shutil
 
-VERSION = "1.3.0"
+VERSION = "1.3.1"
 
 FIXES_FILE = os.path.expanduser("~/.config/espanso/match/dictation-fixes.yml")
 

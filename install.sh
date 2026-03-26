@@ -137,6 +137,46 @@ YAML
   echo "  [OK] Created espanso config directory"
 fi
 
+# ─── Step 5: Shell alias ──────────────────────────
+echo ""
+echo "Step 5: Shell alias"
+echo ""
+echo "  The 'dfx' alias provides a shorthand for 'dictfix'."
+echo ""
+
+# Detect shell profile
+SHELL_PROFILE=""
+if [[ -f "$HOME/.zshrc" ]]; then
+  SHELL_PROFILE="$HOME/.zshrc"
+elif [[ -f "$HOME/.bashrc" ]]; then
+  SHELL_PROFILE="$HOME/.bashrc"
+elif [[ -f "$HOME/.bash_profile" ]]; then
+  SHELL_PROFILE="$HOME/.bash_profile"
+fi
+
+if [[ -n "$SHELL_PROFILE" ]]; then
+  if grep -q "alias dfx=" "$SHELL_PROFILE" 2>/dev/null; then
+    echo "  [OK] dfx alias already exists in $(basename "$SHELL_PROFILE")"
+  else
+    if prompt_yn "  Add 'dfx' alias to $(basename "$SHELL_PROFILE")?"; then
+      echo "" >> "$SHELL_PROFILE"
+      echo "# ================================" >> "$SHELL_PROFILE"
+      echo "# Dictation Fix (dictfix / dfx)" >> "$SHELL_PROFILE"
+      echo "# ================================" >> "$SHELL_PROFILE"
+      echo "alias dfx='dictfix'            # shorthand for dictfix CLI (speech-to-text corrections)" >> "$SHELL_PROFILE"
+      # shellcheck disable=SC1090
+      source "$SHELL_PROFILE" 2>/dev/null || true
+      echo "  [OK] dfx alias added to $(basename "$SHELL_PROFILE")"
+    else
+      echo "  Skipped. Add manually later:"
+      echo "    echo \"alias dfx='dictfix'\" >> $(basename "$SHELL_PROFILE")"
+    fi
+  fi
+else
+  echo "  [!!] Could not detect shell profile (.zshrc, .bashrc, .bash_profile)"
+  echo "       Add manually: alias dfx='dictfix'"
+fi
+
 # ─── Done ─────────────────────────────────────────
 echo ""
 echo "────────────────────────────────────────"
@@ -146,7 +186,4 @@ echo "  Next steps:"
 echo "    1. Open a new terminal (or run: source ~/.zshrc)"
 echo "    2. Run: dictfix doctor    (verify your setup)"
 echo "    3. Run: dictfix add \"wrong\" \"correct\""
-echo ""
-echo "  Optional: add alias to your shell profile:"
-echo "    alias dfx='dictfix'"
 echo "────────────────────────────────────────"
