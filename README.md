@@ -289,7 +289,7 @@ Contributions are welcome! Here's the process:
 - **All work happens on feature branches off `dev`** — never commit directly to `main`
 - `main` is the release branch (published, tagged)
 - `dev` is the integration branch (merged to `main` at release time)
-- dictfix is a single Python script with **zero external dependencies** — keep it that way
+- dictfix is a single Python script with **zero pip dependencies** (stdlib only) — keep it that way. espanso is the only external dependency.
 - Run `./install.sh` to symlink your local copy to `~/bin/dictfix` for testing
 
 ### Submitting changes
